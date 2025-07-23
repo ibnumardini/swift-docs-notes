@@ -69,4 +69,110 @@ print(occupations)
 
 // if declare empty array or dict, must be specify the type
 let emptyArrayOfFruits: [String] = []
-let emptyDictonaryOfOccupations: [String: Integer] = [:]
+let emptyDictonaryOfOccupations: [String: Int] = [:]
+
+// control flow
+// conditionals [if, switch]
+// loops [for-in, while, repeat-while]
+let indivitualScores: [Int] = [72, 43, 103, 87, 12]
+var teamScore = 0
+for score in indivitualScores {
+    if score > 70 {
+        teamScore += 3
+    } else {
+        teamScore += 1
+    }
+}
+
+print(teamScore)
+
+// if and switch expressions
+// value dari kondisi if, langsung di simpen di variable
+// jika multiline, maka harus pakai keyword 'return',
+// jika hanya 1 line, maka otomatis return
+let scoreDecoreation = if teamScore > 10 {
+    "🎉"
+} else {
+    ""
+}
+
+print("Score: ", teamScore, scoreDecoreation)
+
+// optional condition
+var optionalString: String? = "Jokow"
+print(optionalString == nil)
+
+// experiment: change to nil
+var optionalName: String? = "Gib"
+var greeting = "Halooo!"
+if let name = optionalName {
+    greeting = "\(greeting) \(name)"
+}
+
+print(greeting)
+
+// using ?? to set default value, when nil
+let nickName: String? = nil
+let fullName: String = "Pakde Jo"
+let informalGreeting: String = "Hi, \(nickName ?? fullName)"
+
+print(informalGreeting)
+
+// switch support any kind data
+// don't need explicitly 'brak', by default does't contiue to next case
+let vegetable: String = "red pepper"
+switch vegetable {
+case "celery":
+    print("Celery")
+case "cucumber", "watercress":
+    print("Cucumber, watercress")
+case let x where x.hasSuffix("pepper"):
+    print("Pakai varibale x nih")
+default:
+    print("Udah default aja!")
+}
+
+// for-in use for dictonary (unorderd collection), base on arbitary order
+// in [for (_, _)] can use _ underscore to ignore (unused) the value 
+// cause when the variable declare, is must be used
+let interestingNumbers = [
+    "Prime": [2, 3, 5, 7, 11, 13],
+    "Fibonacci": [1, 1, 2, 3, 5, 8],
+    "Square": [1, 4, 9, 16, 25]
+]
+var largest: Int = 0
+var kind: String = ""
+for (name, numbers) in interestingNumbers {
+    for number in numbers {
+        if number > largest {
+            largest = number
+            kind = name
+        }
+    }
+}
+
+print("largest number: \(largest) with kind: \(kind)")
+
+// while - repeat block until condition changes, like something unpredictable loop (from db)
+var n = 2
+while n < 100 {
+    n *= 2
+}
+print(n)
+
+// repat is like, do while
+// with min loop once, in any condition
+var m = 2
+repeat {
+    m *= 2
+} while m < 100
+print(m)
+
+// range: use three dots [...], or 2 dots with lt [..<]
+var i: Int = 0
+var total = 0
+for x in 0..<4 {
+    i += 1
+    total += x
+}
+print(i, total)
